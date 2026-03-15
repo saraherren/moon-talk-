@@ -9,3 +9,12 @@ export default function App() {
       </NavigationContainer>
     );
 }
+import { ThemeProvider } from "./styles/theme";
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <Navigation />
+    </ThemeProvider>
+  );
+}
