@@ -26,3 +26,32 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 });
+import React, { useContext } from "react";
+import { View, FlatList, StyleSheet } from "react-native";
+import StoryHighlight from "../components/StoryHighlight";
+import PostCard from "../components/PostCard";
+import { PostsContext } from "../context/PostsContext";
+
+export default function FeedScreen() {
+  const { posts } = useContext(PostsContext);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.storiesContainer}>
+        <StoryHighlight />
+      </View>
+      <FlatList
+        data={posts}
+        keyExtractor={(item) => item.id}
+        pagingEnabled
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => <PostCard post={item} />}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  storiesContainer: { height: 100, paddingVertical: 10 },
+});
