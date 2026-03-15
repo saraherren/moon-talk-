@@ -1,3 +1,35 @@
 HomeScreen.js
+
+import React from "react";
+import { FlatList, View } from "react-native";
+import PostCard from "../components/PostCard";
+
+const posts = [
+  { id: "1", text: "First MoonTalk post 🌙" },
+  { id: "2", text: "Another thought..." },
+  { id: "3", text: "Blog style idea 💭" },
+];
+
+export default function HomeScreen() {
+  return (
+    <FlatList
+      data={posts}
+      renderItem={({ item }) => <PostCard post={item} />}
+      keyExtractor={(item) => item.id}
+      pagingEnabled
+    />
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
 ProfileScreen.js
 UploadScreen.js
