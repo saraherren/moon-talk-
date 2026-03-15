@@ -16,3 +16,36 @@ export function ThemeProvider({ children }) {
     </ThemeContext.Provider>
   );
 }
+import React, { createContext, useState } from "react";
+
+export const ThemeContext = createContext();
+
+const lightTheme = {
+  background: "#FFFFFF",
+  text: "#000000",
+  card: "#F5F5F5",
+  border: "#E0E0E0",
+};
+
+const darkTheme = {
+  background: "#121212",
+  text: "#FFFFFF",
+  card: "#1E1E1E",
+  border: "#333333",
+};
+
+export function ThemeProvider({ children }) {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setDarkMode((prev) => !prev);
+  };
+
+  const theme = darkMode ? darkTheme : lightTheme;
+
+  return (
+    <ThemeContext.Provider value={{ darkMode, toggleTheme, theme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
