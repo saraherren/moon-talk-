@@ -1,28 +1,21 @@
 import React from "react";
-import { View, FlatList, StyleSheet } from "react-native";
-import StoryHighlight from "../components/StoryHighlight";
+import { FlatList, View } from "react-native";
 import PostCard from "../components/PostCard";
 
 const posts = [
-  { id: "1", text: "Hello from the moon! 🌙" },
-  { id: "2", text: "Enjoying night mode" },
-  { id: "3", text: "React Native is awesome!" },
+  { id: "1", text: "First MoonTalk post 🌙" },
+  { id: "2", text: "Another thought..." },
+  { id: "3", text: "Blog style idea 💭" },
 ];
 
-export default function FeedScreen() {
+export default function FeedScreen() {  // <- updated name
   return (
-    <View style={styles.container}>
-      <View style={styles.storiesContainer}>
-        <StoryHighlight />
-      </View>
-      <FlatList
-        data={posts}
-        keyExtractor={(item) => item.id}
-        pagingEnabled
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <PostCard post={item} />}
-      />
-    </View>
+    <FlatList
+      data={posts}
+      renderItem={({ item }) => <PostCard post={item} />}
+      keyExtractor={(item) => item.id}
+      pagingEnabled
+    />
   );
 }
 
