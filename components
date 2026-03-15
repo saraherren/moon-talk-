@@ -79,3 +79,19 @@ const styles = StyleSheet.create({
 
 
 MoonToggle.js
+import React, { useContext } from "react";
+import { Text, TouchableOpacity } from "react-native";
+import { ThemeContext } from "../context/ThemeContext";
+
+export default function MoonToggle() {
+  const { toggleTheme } = useContext(ThemeContext);
+
+  return (
+    <TouchableOpacity onPress={toggleTheme}>
+      <Text style={{ fontSize: 24 }}>🌙</Text>
+    </TouchableOpacity>
+  );
+}
+
+
+
