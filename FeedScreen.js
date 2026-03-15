@@ -1,5 +1,5 @@
 import React from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import StoryHighlight from "../components/StoryHighlight";
 import PostCard from "../components/PostCard";
 
@@ -11,16 +11,25 @@ const posts = [
 
 export default function FeedScreen() {
   return (
-    <View style={{ flex: 1 }}>
-      <StoryHighlight />
+    <View style={styles.container}>
+      <View style={styles.storiesContainer}>
+        <StoryHighlight />
+      </View>
       <FlatList
         data={posts}
         keyExtractor={(item) => item.id}
         pagingEnabled
-        horizontal={false}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => <PostCard post={item} />}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  storiesContainer: {
+    height: 100,  // Adjust height to fit your StoryHighlight component
+    paddingVertical: 10,
+  },
+});
